@@ -15,24 +15,25 @@ const ExerciseActions = ({ exercise }: { exercise: IExercise }) => {
   const { TodaysPlan, setTodaysPlan, SavePlan, setSavePlan } = context;
 
   const HandleTodaysPlan = () => {
-    if(isTodaysPlanAdded){
-      return toast.error('Todays Plan Is Already Added', {
-      position: 'top-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'dark',
-      transition: Bounce,
-    });
+    if (isTodaysPlanAdded) {
+      toast.error('Todays Plan Is Already Added', {
+        position: 'bottom-right',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+        transition: Bounce,
+      });
+      return;
     }
     setTodaysPlan([...TodaysPlan, exercise]);
 
-      toast.success('Todays Plan Is Added', {
-      position: 'top-right',
-      autoClose: 5000,
+    toast.success('Todays Plan Is Added', {
+      position: 'bottom-right',
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: false,
       pauseOnHover: true,
@@ -43,24 +44,25 @@ const ExerciseActions = ({ exercise }: { exercise: IExercise }) => {
     });
   };
   const HandleSaveData = () => {
-    if(isSavePlanAdded){
-      return toast.error('Save Plan Is Already Added', {
-      position: 'top-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'dark',
-      transition: Bounce,
-    });
+    if (isSavePlanAdded) {
+      toast.error('Save Plan Is Already Added', {
+        position: 'bottom-right',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+        transition: Bounce,
+      });
+      return;
     }
     setSavePlan([...SavePlan, exercise]);
 
-      toast.success('Save Plan Is Added', {
-      position: 'top-right',
-      autoClose: 5000,
+    toast.success('Save Plan Is Added', {
+      position: 'bottom-right',
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: false,
       pauseOnHover: true,
@@ -70,7 +72,7 @@ const ExerciseActions = ({ exercise }: { exercise: IExercise }) => {
       transition: Bounce,
     });
   };
-  console.log(SavePlan)
+  console.log(SavePlan);
   const isTodaysPlanAdded = TodaysPlan.some((item) => item.id === exercise.id);
   const isSavePlanAdded = SavePlan.some((item) => item.id === exercise.id);
   return (

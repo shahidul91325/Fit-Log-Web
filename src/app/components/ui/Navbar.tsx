@@ -3,12 +3,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import logo from "@/public/logo.png";
+import { ExcerciseContext } from "../../ContextProvider/UseContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const context = useContext(ExcerciseContext);
+
+  if (!context) {
+    throw new Error('ExerciseContext must be used inside ExerciseProvider');
+  }
+  const { TodaysPlan, SavePlan,} = context;
+
   const pathname = usePathname();
 
   const isWorkoutActive = pathname === "/";
@@ -71,7 +79,7 @@ const Navbar = () => {
             Plan
 
             <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#C2F800] px-1 text-xs font-bold text-black">
-              0
+              {TodaysPlan.length}
             </span>
           </Link>
 
@@ -83,7 +91,7 @@ const Navbar = () => {
             Saved
 
             <span className="flex h-5 min-w-5 items-center justify-center rounded-full border border-zinc-700 px-1 text-xs">
-              0
+              {SavePlan.length}
             </span>
           </Link>
         </div>
@@ -138,7 +146,7 @@ const Navbar = () => {
               <span>Plan</span>
 
               <span className="rounded-full bg-[#C2F800] px-2 text-xs font-bold text-black">
-                0
+                {TodaysPlan.length}
               </span>
             </Link>
 
@@ -151,7 +159,7 @@ const Navbar = () => {
               <span>Saved</span>
 
               <span className="rounded-full border border-zinc-700 px-2 text-xs">
-                0
+                {SavePlan.length}
               </span>
             </Link>
 
