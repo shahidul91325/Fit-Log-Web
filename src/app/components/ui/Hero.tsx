@@ -3,7 +3,7 @@ import banner from '@/public/banner.png'
 
 const Hero = () => {
   return (
-    <section className="w-full bg-[#0a0c10] min-h-screen flex items-center justify-center p-4 md:p-8">
+    <section className="w-full bg-[#0a0c10] flex items-center justify-center my-5 p-4 md:p-8">
       <div className="w-full bg-[#12141a] rounded-2xl border border-gray-800 p-6 md:p-12 lg:p-16 flex flex-col-reverse lg:flex-row items-center justify-between gap-8 lg:gap-12 shadow-2xl">
         
         {/* Left Text Content */}

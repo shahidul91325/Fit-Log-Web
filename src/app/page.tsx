@@ -1,10 +1,14 @@
-import Image from "next/image";
-import Hero from "./components/Hero";
+import Hero from './components/ui/Hero';
+import Library from './components/library/Library';
+import { getExercises } from './lib/api';
 
-export default function Home() {
+const Home = async () => {
+  const exercises = await getExercises();
   return (
     <div>
       <Hero></Hero>
+      <Library exercises={exercises}></Library>
     </div>
   );
-}
+};
+export default Home;
