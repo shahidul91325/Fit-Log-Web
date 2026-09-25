@@ -2,19 +2,19 @@
 
 import { useContext } from 'react';
 import { IoCalendarOutline, IoBookmarkOutline } from 'react-icons/io5';
-import { ExcerciseContext } from '../../ContextProvider/UseContext';
 import { IExercise } from '../../types/Exercise';
 import { Bounce, toast } from 'react-toastify';
+import { excerciseContext } from '../../context-provider/contextProvider';
 
 const ExerciseActions = ({ exercise }: { exercise: IExercise }) => {
-  const context = useContext(ExcerciseContext);
+  const context = useContext(excerciseContext);
 
   if (!context) {
     throw new Error('ExerciseContext must be used inside ExerciseProvider');
   }
-  const { TodaysPlan, setTodaysPlan, SavePlan, setSavePlan } = context;
+  const { todaysPlan, setTodaysPlan, savePlan, setSavePlan } = context;
 
-  const HandleTodaysPlan = () => {
+  const handleTodaysPlan = () => {
     if (isTodaysPlanAdded) {
       toast.error('Todays Plan Is Already Added', {
         position: 'bottom-right',
@@ -29,7 +29,7 @@ const ExerciseActions = ({ exercise }: { exercise: IExercise }) => {
       });
       return;
     }
-    setTodaysPlan([...TodaysPlan, exercise]);
+    setTodaysPlan([...todaysPlan, exercise]);
 
     toast.success('Todays Plan Is Added', {
       position: 'bottom-right',
@@ -43,7 +43,7 @@ const ExerciseActions = ({ exercise }: { exercise: IExercise }) => {
       transition: Bounce,
     });
   };
-  const HandleSaveData = () => {
+  const handleSaveData = () => {
     if (isSavePlanAdded) {
       toast.error('Save Plan Is Already Added', {
         position: 'bottom-right',
@@ -58,7 +58,7 @@ const ExerciseActions = ({ exercise }: { exercise: IExercise }) => {
       });
       return;
     }
-    setSavePlan([...SavePlan, exercise]);
+    setSavePlan([...savePlan, exercise]);
 
     toast.success('Save Plan Is Added', {
       position: 'bottom-right',
@@ -72,15 +72,15 @@ const ExerciseActions = ({ exercise }: { exercise: IExercise }) => {
       transition: Bounce,
     });
   };
-  
-  const isTodaysPlanAdded = TodaysPlan.some((item) => item.id === exercise.id);
-  const isSavePlanAdded = SavePlan.some((item) => item.id === exercise.id);
+
+  const isTodaysPlanAdded = todaysPlan.some((item) => item.id === exercise.id);
+  const isSavePlanAdded = savePlan.some((item) => item.id === exercise.id);
   return (
     <div className="mt-8 flex flex-col gap-3 sm:flex-row">
       {/* Add Button */}
       <button
         type="button"
-        onClick={() => HandleTodaysPlan()}
+        onClick={() => handleTodaysPlan()}
         className="flex items-center justify-center gap-3 rounded-xl bg-[#CCFF00] px-6 py-3.5 text-sm font-bold text-black transition hover:bg-[#c7ed32] active:scale-[0.98]"
       >
         <IoCalendarOutline className="h-6 w-6 shrink-0" />
@@ -91,7 +91,7 @@ const ExerciseActions = ({ exercise }: { exercise: IExercise }) => {
       {/* Save Button */}
       <button
         type="button"
-        onClick={() => HandleSaveData()}
+        onClick={() => handleSaveData()}
         className="flex items-center justify-center gap-3 rounded-xl border border-[#3a3e49] px-6 py-3.5 text-sm font-medium text-white transition hover:bg-[#171920] active:scale-[0.98]"
       >
         <IoBookmarkOutline className="h-6 w-6 shrink-0" />

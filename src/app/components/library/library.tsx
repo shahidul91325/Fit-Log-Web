@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { IExercise } from "../../types/Exercise";
-import ExerciseCard from "./ExerciseCard";
+import ExerciseCard from "./exerciseCard";
 
 
 interface LibraryProps {

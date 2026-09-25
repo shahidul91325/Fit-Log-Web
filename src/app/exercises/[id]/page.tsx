@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
-import ExerciseDetails from "../../components/exercise/ExerciseDetails";
+import ExerciseDetails from "../../components/exercise/exerciseDetails";
 import { getExerciseById } from "../../lib/singleapi";
 interface PageProps {
   params: Promise<{
     id: string;
   }>;
 }
-const ExerciseId =async ({ params }: PageProps) => {
+const exerciseId =async ({ params }: PageProps) => {
   const { id } = await params;
 
   const exercise = await getExerciseById(id);
@@ -17,4 +17,4 @@ const ExerciseId =async ({ params }: PageProps) => {
 
   return <ExerciseDetails exercise={exercise} />;
 }
-export default ExerciseId;
+export default exerciseId;

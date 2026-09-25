@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { IExercise } from "../../types/Exercise";
-import ExerciseActions from "./ExerciseAction";
+import ExerciseActions from "./exerciseAction";
 
 interface ExerciseDetailsProps {
   exercise: IExercise;

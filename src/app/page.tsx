@@ -1,5 +1,5 @@
 import Hero from './components/ui/Hero';
-import Library from './components/library/Library';
+import Library from './components/library/library';
 import { getExercises } from './lib/api';
 
 const Home = async () => {

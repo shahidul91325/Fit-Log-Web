@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from './components/ui/Navbar';
 import Footer from './components/ui/Footer';
-import UseContext from './ContextProvider/UseContext';
+import ContextProvider from './context-provider/contextProvider';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -26,7 +26,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <UseContext>
+        <ContextProvider>
           <div className="h-[80px]">
             <Navbar></Navbar>
           </div>
@@ -34,7 +34,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
           <div>
             <Footer></Footer>
           </div>
-        </UseContext>
+        </ContextProvider>
         <ToastContainer />
       </body>
     </html>

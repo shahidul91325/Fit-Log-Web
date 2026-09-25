@@ -6,7 +6,7 @@ interface ExerciseCardProps {
   exercise: IExercise;
 }
 
-const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
+const exerciseCard = ({ exercise }: ExerciseCardProps) => {
   return (
     <article className="overflow-hidden rounded-[18px] border border-[#292c35] bg-[#14151c]">
       {/* Image */}
@@ -71,4 +71,4 @@ const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
   );
 };
 
-export default ExerciseCard;
+export default exerciseCard;

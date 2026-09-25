@@ -2,24 +2,24 @@
 
 import { useContext, useMemo, useState } from 'react';
 
-import PlanCard from './PlanCard';
-import PlanTabs from './PlanTabs';
+import PlanCard from './planCard';
+import PlanTabs from './planTabs';
 import Link from 'next/link';
-import { ExcerciseContext } from '../../ContextProvider/UseContext';
+import { excerciseContext } from '../../context-provider/contextProvider';
 
-const MyPlan = () => {
-  const context = useContext(ExcerciseContext);
+const MyPlanSection = () => {
+  const context = useContext(excerciseContext);
 
   if (!context) {
     throw new Error('ExerciseContext must be used inside ExerciseProvider');
   }
-  const { TodaysPlan, setTodaysPlan, SavePlan, setSavePlan } = context;
+  const { todaysPlan, setTodaysPlan, savePlan, setSavePlan } = context;
 
   const [activeTab, setActiveTab] = useState<'today' | 'saved'>('today');
 
   const [sortBy, setSortBy] = useState<'duration' | 'rating' | 'calories'>('duration');
 
-  const activeExercises = activeTab === 'today' ? TodaysPlan : SavePlan;
+  const activeExercises = activeTab === 'today' ? todaysPlan : savePlan;
 
   const sortedExercises = useMemo(() => {
     return [...activeExercises].sort((a, b) => {
@@ -35,12 +35,12 @@ const MyPlan = () => {
     });
   }, [activeExercises, sortBy]);
 
-  const totalMinutesTodaysPlan = TodaysPlan.reduce((total, exercise) => total + exercise.duration, 0);
+  const totalMinutesTodaysPlan = todaysPlan.reduce((total, exercise) => total + exercise.duration, 0);
 
-  const totalCaloriesTodaysPlan = TodaysPlan.reduce((total, exercise) => total + exercise.caloriesBurned, 0);
-  const totalMinutesSavePlan = SavePlan.reduce((total, exercise) => total + exercise.duration, 0);
+  const totalCaloriesTodaysPlan = todaysPlan.reduce((total, exercise) => total + exercise.caloriesBurned, 0);
+  const totalMinutesSavePlan = savePlan.reduce((total, exercise) => total + exercise.duration, 0);
 
-  const totalCaloriesSavePlan = SavePlan.reduce((total, exercise) => total + exercise.caloriesBurned, 0);
+  const totalCaloriesSavePlan = savePlan.reduce((total, exercise) => total + exercise.caloriesBurned, 0);
 
   const removeExercise = (id: number) => {
     if (activeTab === 'today') {
@@ -72,7 +72,7 @@ const MyPlan = () => {
             <div className="px-5 py-5 sm:px-6 sm:py-6">
               <p className="text-xs text-[#858b99]">Exercises</p>
 
-              <p className="mt-1 text-3xl font-black text-[#8cff18]">{TodaysPlan.length}</p>
+              <p className="mt-1 text-3xl font-black text-[#8cff18]">{todaysPlan.length}</p>
             </div>
 
             {/* Minutes */}
@@ -95,7 +95,7 @@ const MyPlan = () => {
             <div className="px-5 py-5 sm:px-6 sm:py-6">
               <p className="text-xs text-[#858b99]">Exercises</p>
 
-              <p className="mt-1 text-3xl font-black text-[#8cff18]">{SavePlan.length}</p>
+              <p className="mt-1 text-3xl font-black text-[#8cff18]">{savePlan.length}</p>
             </div>
 
             {/* Minutes */}
@@ -169,4 +169,4 @@ const MyPlan = () => {
   );
 };
 
-export default MyPlan;
+export default MyPlanSection;

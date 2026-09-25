@@ -3,7 +3,6 @@ import Link from "next/link";
 import { IExercise } from "../../types/Exercise";
 
 
-
 interface PlanCardProps {
   exercise: IExercise;
   showDoneButton?: boolean;
