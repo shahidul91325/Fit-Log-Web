@@ -20,7 +20,7 @@ const Navbar = () => {
   const pathname = usePathname();
 
   const isWorkoutActive = pathname === '/';
-  const isMyPlanActive = pathname === '/MyPlan';
+  const isMyPlanActive = pathname === '/my-plan';
 
   return (
     <header className="fixed left-0 top-0 z-50 w-full border-b border-zinc-800/70 bg-[#0c0d0f]/95 text-white backdrop-blur-md">
@@ -46,7 +46,7 @@ const Navbar = () => {
 
           {/* My Plan */}
           <Link
-            href="/MyPlan"
+            href="/my-plan"
             className={`rounded-full px-5 py-2 text-sm font-medium transition ${
               isMyPlanActive ? 'bg-lime-950 text-[#C2F800]' : 'text-zinc-400 hover:text-white'
             }`}
@@ -58,7 +58,7 @@ const Navbar = () => {
         {/* Desktop Right */}
         <div className="hidden items-center gap-4 md:flex">
           {/* Plan */}
-          <Link href="/MyPlan" className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm transition`}>
+          <Link href="/my-plan" className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm transition`}>
             Plan
             <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#C2F800] px-1 text-xs font-bold text-black">
               {todaysPlan.length}
@@ -66,7 +66,7 @@ const Navbar = () => {
           </Link>
 
           {/* Saved */}
-          <Link href="/MyPlan" className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm transition`}>
+          <Link href="/my-plan" className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm transition`}>
             Saved
             <span className="flex h-5 min-w-5 items-center justify-center rounded-full border border-zinc-700 px-1 text-xs">
               {savePlan.length}
@@ -101,7 +101,7 @@ const Navbar = () => {
 
             {/* My Plan */}
             <Link
-              href="/MyPlan"
+              href="/my-plan"
               onClick={() => setIsOpen(false)}
               className={`rounded-lg px-4 py-3 text-sm transition ${
                 isMyPlanActive ? 'bg-lime-950 text-[#C2F800]' : 'text-zinc-400 hover:bg-zinc-900 hover:text-white'
@@ -112,7 +112,7 @@ const Navbar = () => {
 
             {/* Plan */}
             <Link
-              href="/MyPlan"
+              href="/my-plan"
               onClick={() => setIsOpen(false)}
               className={`flex justify-between rounded-lg px-4 py-3 text-sm transition`}
             >
@@ -123,7 +123,7 @@ const Navbar = () => {
 
             {/* Saved */}
             <Link
-              href="/MyPlan"
+              href="/my-plan"
               onClick={() => setIsOpen(false)}
               className={`flex justify-between rounded-lg px-4 py-3 text-sm transition`}
             >
