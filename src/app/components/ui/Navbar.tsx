@@ -38,7 +38,7 @@ const Navbar = () => {
           <Link
             href="/"
             className={`rounded-full px-5 py-2 text-sm font-medium transition ${
-              isWorkoutActive ? 'bg-lime-950 text-[#C2F800]' : 'text-zinc-400 hover:text-white'
+              isWorkoutActive ? 'bg-lime-950 text-[#CCFF00]' : 'text-zinc-400 hover:text-white'
             }`}
           >
             Workouts
@@ -48,7 +48,7 @@ const Navbar = () => {
           <Link
             href="/my-plan"
             className={`rounded-full px-5 py-2 text-sm font-medium transition ${
-              isMyPlanActive ? 'bg-lime-950 text-[#C2F800]' : 'text-zinc-400 hover:text-white'
+              isMyPlanActive ? 'bg-lime-950 text-[#CCFF00]' : 'text-zinc-400 hover:text-white'
             }`}
           >
             My Plan
@@ -60,7 +60,7 @@ const Navbar = () => {
           {/* Plan */}
           <Link href="/my-plan" className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm transition`}>
             Plan
-            <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#C2F800] px-1 text-xs font-bold text-black">
+            <span className="flex h-6 min-w-6 items-center justify-center rounded-full bg-[#CCFF00] px-1 text-xs font-bold text-black">
               {todaysPlan.length}
             </span>
           </Link>
@@ -68,7 +68,7 @@ const Navbar = () => {
           {/* Saved */}
           <Link href="/my-plan" className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm transition`}>
             Saved
-            <span className="flex h-5 min-w-5 items-center justify-center rounded-full border border-zinc-700 px-1 text-xs">
+            <span className="flex h-6 min-w-6 items-center justify-center rounded-full border border-zinc-700 px-1 text-xs">
               {savePlan.length}
             </span>
           </Link>
@@ -93,7 +93,7 @@ const Navbar = () => {
               href="/"
               onClick={() => setIsOpen(false)}
               className={`rounded-lg px-4 py-3 text-sm transition ${
-                isWorkoutActive ? 'bg-lime-950 text-[#C2F800]' : 'text-zinc-400 hover:bg-zinc-900 hover:text-white'
+                isWorkoutActive ? 'bg-lime-950 text-[#CCFF00]' : 'text-zinc-400 hover:bg-zinc-900 hover:text-white'
               }`}
             >
               Workouts
@@ -104,7 +104,7 @@ const Navbar = () => {
               href="/my-plan"
               onClick={() => setIsOpen(false)}
               className={`rounded-lg px-4 py-3 text-sm transition ${
-                isMyPlanActive ? 'bg-lime-950 text-[#C2F800]' : 'text-zinc-400 hover:bg-zinc-900 hover:text-white'
+                isMyPlanActive ? 'bg-lime-950 text-[#CCFF00]' : 'text-zinc-400 hover:bg-zinc-900 hover:text-white'
               }`}
             >
               My Plan
@@ -114,18 +114,18 @@ const Navbar = () => {
             <Link
               href="/my-plan"
               onClick={() => setIsOpen(false)}
-              className={`flex justify-between rounded-lg px-4 py-3 text-sm transition`}
+              className={`flex justify-between rounded-lg px-4 py-4 text-sm transition`}
             >
               <span>Plan</span>
 
-              <span className="rounded-full bg-[#C2F800] px-2 text-xs font-bold text-black">{todaysPlan.length}</span>
+              <span className="rounded-full bg-[#CCFF00] px-2 text-xs font-bold text-black">{todaysPlan.length}</span>
             </Link>
 
             {/* Saved */}
             <Link
               href="/my-plan"
               onClick={() => setIsOpen(false)}
-              className={`flex justify-between rounded-lg px-4 py-3 text-sm transition`}
+              className={`flex justify-between rounded-lg px-4 py-4 text-sm transition`}
             >
               <span>Saved</span>
 

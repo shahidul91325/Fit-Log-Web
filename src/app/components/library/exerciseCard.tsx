@@ -26,7 +26,7 @@ const exerciseCard = ({ exercise }: ExerciseCardProps) => {
           {exercise.muscleGroups.map((muscle) => (
             <span
               key={muscle}
-              className="rounded-full bg-[#8cff18] px-3 py-1 text-xs font-bold uppercase text-black"
+              className="rounded-full bg-[#CCFF00] px-3 py-1 text-xs font-bold uppercase text-black"
             >
               {muscle}
             </span>

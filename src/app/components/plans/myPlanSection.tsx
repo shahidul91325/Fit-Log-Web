@@ -7,6 +7,7 @@ import PlanTabs from './planTabs';
 import Link from 'next/link';
 import { excerciseContext } from '../../context-provider/contextProvider';
 import { Bounce, toast } from 'react-toastify';
+import { FiChevronDown } from 'react-icons/fi';
 
 const MyPlanSection = () => {
   const context = useContext(excerciseContext);
@@ -45,16 +46,16 @@ const MyPlanSection = () => {
 
   const removeExercise = (id: number) => {
     toast.error('× Workout removed', {
-        position: 'bottom-right',
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'dark',
-        transition: Bounce,
-      });
+      position: 'bottom-right',
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+      transition: Bounce,
+    });
     if (activeTab === 'today') {
       setTodaysPlan((prev) => prev.filter((exercise) => exercise.id !== id));
     } else {
@@ -64,16 +65,16 @@ const MyPlanSection = () => {
 
   const markAsDone = (id: number) => {
     toast.success('✓ Workout marked as done', {
-        position: 'bottom-right',
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'dark',
-        transition: Bounce,
-      });
+      position: 'bottom-right',
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+      transition: Bounce,
+    });
     setTodaysPlan((prev) => prev.filter((exercise) => exercise.id !== id));
   };
 
@@ -95,7 +96,7 @@ const MyPlanSection = () => {
             <div className="px-5 py-5 sm:px-6 sm:py-6">
               <p className="text-xs text-[#858b99]">Exercises</p>
 
-              <p className="mt-1 text-3xl font-black text-[#8cff18]">{todaysPlan.length}</p>
+              <p className="mt-1 text-3xl font-black text-[#CCFF00]">{todaysPlan.length}</p>
             </div>
 
             {/* Minutes */}
@@ -143,17 +144,19 @@ const MyPlanSection = () => {
           <div className="flex items-center gap-2">
             <span className="text-xs text-[#858b99]">Sort By</span>
 
-            <select
-              value={sortBy}
-              onChange={(event) => setSortBy(event.target.value as 'duration' | 'rating' | 'calories')}
-              className="rounded-lg border border-[#292c35] bg-[#15171e] px-3 py-2 text-xs text-white outline-none"
-            >
-              <option value="duration">Duration</option>
+            <div className="relative">
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as 'duration' | 'calories' | 'rating')}
+                className="appearance-none rounded-lg border border-gray-700 bg-[#12141a] px-4 py-2 pr-10 text-sm text-white outline-none"
+              >
+                <option value="duration">Duration</option>
+                <option value="calories">Calories</option>
+                <option value="rating">Rating</option>
+              </select>
 
-              <option value="rating">Rating</option>
-
-              <option value="calories">Calories</option>
-            </select>
+              <FiChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
+            </div>
           </div>
         </div>
 
@@ -176,11 +179,13 @@ const MyPlanSection = () => {
             <div>
               <h2 className="text-lg font-black uppercase">Nothing Here Yet</h2>
 
-              <p className="mt-1 text-xs text-[#858b99] sm:text-sm">Browse the library and add a lift to get today moving.</p>
+              <p className="mt-1 text-xs text-[#858b99] sm:text-sm">
+                Browse the library and add a lift to get today moving.
+              </p>
 
               <Link
                 href="/"
-                className="mt-5 inline-block rounded-full bg-[#8cff18] px-6 py-2.5 text-xs font-bold text-black transition hover:bg-[#9cff3d]"
+                className="mt-5 inline-block rounded-full bg-[#CCFF00] px-6 py-2.5 text-xs font-bold text-black transition hover:bg-[#cef23c]"
               >
                 Go to workouts
               </Link>

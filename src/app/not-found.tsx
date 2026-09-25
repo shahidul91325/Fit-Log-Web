@@ -5,7 +5,7 @@ const notFound = () => {
     <main className="flex min-h-screen items-center justify-center bg-[#0d0e12] px-5 py-12 text-white">
       <div className="w-full max-w-3xl text-center">
         {/* Small Label */}
-        <p className="mb-5 text-sm font-semibold uppercase tracking-[0.3em] text-[#ccff00]">
+        <p className="mb-5 text-sm font-semibold uppercase tracking-[0.3em] text-[#CCFF00]">
           FitLog • Page Not Found
         </p>
 
@@ -29,7 +29,7 @@ const notFound = () => {
         <div className="mx-auto my-8 flex max-w-xs items-center gap-3">
           <span className="h-px flex-1 bg-white/10" />
 
-          <span className="h-2 w-2 rotate-45 bg-[#ccff00]" />
+          <span className="h-2 w-2 rotate-45 bg-[#CCFF00]" />
 
           <span className="h-px flex-1 bg-white/10" />
         </div>
@@ -37,7 +37,7 @@ const notFound = () => {
         {/* CTA */}
         <Link
           href="/"
-          className="inline-flex items-center gap-3 rounded-full bg-[#ccff00] px-7 py-3.5 text-sm font-black uppercase tracking-wide text-black transition-all duration-300 hover:scale-105 hover:bg-[#d7ff33] active:scale-95"
+          className="inline-flex items-center gap-3 rounded-full bg-[#CCFF00] px-7 py-3.5 text-sm font-black uppercase tracking-wide text-black transition-all duration-300 hover:scale-105 hover:bg-[#ccf139] active:scale-95"
         >
           <span>←</span>
           Back to Workouts

@@ -41,17 +41,17 @@ const PlanCard = ({
         {/* Stats */}
         <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-[#b0b4bf]">
           <span className="flex items-center gap-1">
-            <span className="text-[#8cff18]">◷</span>
+            <span className="text-[#CCFF00]">◷</span>
             {exercise.duration} min
           </span>
 
           <span className="flex items-center gap-1">
-            <span className="text-[#8cff18]">♨</span>
+            <span className="text-[#CCFF00]">♨</span>
             {exercise.caloriesBurned} kcal
           </span>
 
           <span className="flex items-center gap-1">
-            <span className="text-[#8cff18]">☆</span>
+            <span className="text-[#CCFF00]">☆</span>
             {exercise.rating}
           </span>
         </div>
@@ -70,7 +70,7 @@ const PlanCard = ({
           <button
             type="button"
             onClick={() => onDone?.(exercise.id)}
-            className="rounded-full bg-[#8cff18] px-4 py-2 text-xs font-bold text-black transition hover:bg-[#9cff3d]"
+            className="rounded-full bg-[#CCFF00] px-4 py-2 text-xs font-bold text-black transition hover:bg-[#9cff3d]"
           >
             ✓ Mark as Done
           </button>

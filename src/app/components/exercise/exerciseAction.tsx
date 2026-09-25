@@ -81,7 +81,7 @@ const ExerciseActions = ({ exercise }: { exercise: IExercise }) => {
       <button
         type="button"
         onClick={() => handleTodaysPlan()}
-        className="flex items-center justify-center gap-3 rounded-xl bg-[#CCFF00] px-6 py-3.5 text-sm font-bold text-black transition hover:bg-[#c7ed32] active:scale-[0.98]"
+        className="flex items-center justify-center gap-3 rounded-xl bg-[#CCFF00] px-6 py-3.5 text-sm font-bold text-black transition hover:bg-[#c6eb2f] active:scale-[0.98]"
       >
         <IoCalendarOutline className="h-6 w-6 shrink-0" />
 
