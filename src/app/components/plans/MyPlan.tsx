@@ -1,0 +1,172 @@
+'use client';
+
+import { useContext, useMemo, useState } from 'react';
+
+import PlanCard from './PlanCard';
+import PlanTabs from './PlanTabs';
+import Link from 'next/link';
+import { ExcerciseContext } from '../../ContextProvider/UseContext';
+
+const MyPlan = () => {
+  const context = useContext(ExcerciseContext);
+
+  if (!context) {
+    throw new Error('ExerciseContext must be used inside ExerciseProvider');
+  }
+  const { TodaysPlan, setTodaysPlan, SavePlan, setSavePlan } = context;
+
+  const [activeTab, setActiveTab] = useState<'today' | 'saved'>('today');
+
+  const [sortBy, setSortBy] = useState<'duration' | 'rating' | 'calories'>('duration');
+
+  const activeExercises = activeTab === 'today' ? TodaysPlan : SavePlan;
+
+  const sortedExercises = useMemo(() => {
+    return [...activeExercises].sort((a, b) => {
+      if (sortBy === 'duration') {
+        return b.duration - a.duration;
+      }
+
+      if (sortBy === 'rating') {
+        return b.rating - a.rating;
+      }
+
+      return b.caloriesBurned - a.caloriesBurned;
+    });
+  }, [activeExercises, sortBy]);
+
+  const totalMinutesTodaysPlan = TodaysPlan.reduce((total, exercise) => total + exercise.duration, 0);
+
+  const totalCaloriesTodaysPlan = TodaysPlan.reduce((total, exercise) => total + exercise.caloriesBurned, 0);
+  const totalMinutesSavePlan = SavePlan.reduce((total, exercise) => total + exercise.duration, 0);
+
+  const totalCaloriesSavePlan = SavePlan.reduce((total, exercise) => total + exercise.caloriesBurned, 0);
+
+  const removeExercise = (id: number) => {
+    if (activeTab === 'today') {
+      setTodaysPlan((prev) => prev.filter((exercise) => exercise.id !== id));
+    } else {
+      setSavePlan((prev) => prev.filter((exercise) => exercise.id !== id));
+    }
+  };
+
+  const markAsDone = (id: number) => {
+    setTodaysPlan((prev) => prev.filter((exercise) => exercise.id !== id));
+  };
+
+  return (
+    <main className="min-h-screen bg-[#0d0e12] px-4 py-10 text-white sm:px-6 sm:py-12 lg:px-8">
+      <div className="mx-auto max-w-337.5">
+        {/* ================= HEADER ================= */}
+        <div className="mb-7">
+          <h1 className="text-3xl font-black uppercase tracking-tight sm:text-4xl">My Plan</h1>
+
+          <p className="mt-1 text-sm text-[#8e94a2] sm:text-base">
+            Cap of five lifts for today. Finish them, then load more.
+          </p>
+        </div>
+        {/* ================= SUMMARY ================= */}
+        {activeTab === 'today' ? (
+          <div className="mb-7 grid grid-cols-1 overflow-hidden rounded-2xl border border-[#292c35] bg-[#14151c] sm:grid-cols-3">
+            {/* Exercises */}
+            <div className="px-5 py-5 sm:px-6 sm:py-6">
+              <p className="text-xs text-[#858b99]">Exercises</p>
+
+              <p className="mt-1 text-3xl font-black text-[#8cff18]">{TodaysPlan.length}</p>
+            </div>
+
+            {/* Minutes */}
+            <div className="border-[#292c35] px-5 py-5 sm:border-l sm:px-6 sm:py-6">
+              <p className="text-xs text-[#858b99]">Minutes</p>
+
+              <p className="mt-1 text-3xl font-black text-white">{totalMinutesTodaysPlan}</p>
+            </div>
+
+            {/* Calories */}
+            <div className="border-[#292c35] px-5 py-5 sm:border-l sm:px-6 sm:py-6">
+              <p className="text-xs text-[#858b99]">Calories</p>
+
+              <p className="mt-1 text-3xl font-black text-white">{totalCaloriesTodaysPlan}</p>
+            </div>
+          </div>
+        ) : (
+          <div className="mb-7 grid grid-cols-1 overflow-hidden rounded-2xl border border-[#292c35] bg-[#14151c] sm:grid-cols-3">
+            {/* Exercises */}
+            <div className="px-5 py-5 sm:px-6 sm:py-6">
+              <p className="text-xs text-[#858b99]">Exercises</p>
+
+              <p className="mt-1 text-3xl font-black text-[#8cff18]">{SavePlan.length}</p>
+            </div>
+
+            {/* Minutes */}
+            <div className="border-[#292c35] px-5 py-5 sm:border-l sm:px-6 sm:py-6">
+              <p className="text-xs text-[#858b99]">Minutes</p>
+
+              <p className="mt-1 text-3xl font-black text-white">{totalMinutesSavePlan}</p>
+            </div>
+
+            {/* Calories */}
+            <div className="border-[#292c35] px-5 py-5 sm:border-l sm:px-6 sm:py-6">
+              <p className="text-xs text-[#858b99]">Calories</p>
+
+              <p className="mt-1 text-3xl font-black text-white">{totalCaloriesSavePlan}</p>
+            </div>
+          </div>
+        )}
+        {/* ================= TABS + SORT ================= */}
+        <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <PlanTabs activeTab={activeTab} onChange={setActiveTab} />
+
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-[#858b99]">Sort By</span>
+
+            <select
+              value={sortBy}
+              onChange={(event) => setSortBy(event.target.value as 'duration' | 'rating' | 'calories')}
+              className="rounded-lg border border-[#292c35] bg-[#15171e] px-3 py-2 text-xs text-white outline-none"
+            >
+              <option value="duration">Duration</option>
+
+              <option value="rating">Rating</option>
+
+              <option value="calories">Calories</option>
+            </select>
+          </div>
+        </div>
+
+        {/* ================= CONTENT ================= */}
+        {sortedExercises.length > 0 ? (
+          <div className="space-y-4">
+            {sortedExercises.map((exercise) => (
+              <PlanCard
+                key={exercise.id}
+                exercise={exercise}
+                showDoneButton={activeTab === 'today'}
+                onRemove={removeExercise}
+                onDone={markAsDone}
+              />
+            ))}
+          </div>
+        ) : (
+          /* Empty State */
+          <div className="flex min-h-62.5 items-center justify-center rounded-2xl border border-dashed border-[#292c35] px-5 text-center">
+            <div>
+              <h2 className="text-lg font-black uppercase">Nothing Here Yet</h2>
+
+              <p className="mt-1 text-xs text-[#858b99] sm:text-sm">Browse the library and add a lift to get moving.</p>
+
+              <Link
+                href="/"
+                className="mt-5 inline-block rounded-full bg-[#8cff18] px-6 py-2.5 text-xs font-bold text-black transition hover:bg-[#9cff3d]"
+              >
+                Go to workouts
+              </Link>
+            </div>
+          </div>
+        )}
+      </div>
+    </main>
+  );
+};
+
+export default MyPlan;

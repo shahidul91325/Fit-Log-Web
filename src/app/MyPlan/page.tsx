@@ -1,12 +1,12 @@
 import React from 'react';
-import { getExercises } from '../lib/api';
+import MyPlans from '../components/plans/MyPlan';
 
-const MyPlanPage = async () => {
-  const exercises = await getExercises();
+const MyPlan = () => {
   return (
     <div>
+      <MyPlans></MyPlans>
     </div>
   );
 };
 
-export default MyPlanPage;
+export default MyPlan;

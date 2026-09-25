@@ -72,7 +72,7 @@ const ExerciseActions = ({ exercise }: { exercise: IExercise }) => {
       transition: Bounce,
     });
   };
-  console.log(SavePlan);
+  
   const isTodaysPlanAdded = TodaysPlan.some((item) => item.id === exercise.id);
   const isSavePlanAdded = SavePlan.some((item) => item.id === exercise.id);
   return (
