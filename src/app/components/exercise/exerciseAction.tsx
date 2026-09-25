@@ -16,7 +16,7 @@ const ExerciseActions = ({ exercise }: { exercise: IExercise }) => {
 
   const handleTodaysPlan = () => {
     if (isTodaysPlanAdded) {
-      toast.error('Todays Plan Is Already Added', {
+      toast.error('× Todays Plan Is Already Added', {
         position: 'bottom-right',
         autoClose: 1000,
         hideProgressBar: false,
@@ -31,7 +31,7 @@ const ExerciseActions = ({ exercise }: { exercise: IExercise }) => {
     }
     setTodaysPlan([...todaysPlan, exercise]);
 
-    toast.success('Todays Plan Is Added', {
+    toast.success('✓ Todays Plan Is Added', {
       position: 'bottom-right',
       autoClose: 1000,
       hideProgressBar: false,
@@ -45,7 +45,7 @@ const ExerciseActions = ({ exercise }: { exercise: IExercise }) => {
   };
   const handleSaveData = () => {
     if (isSavePlanAdded) {
-      toast.error('Save Plan Is Already Added', {
+      toast.error('× Save Plan Is Already Added', {
         position: 'bottom-right',
         autoClose: 1000,
         hideProgressBar: false,
@@ -60,7 +60,7 @@ const ExerciseActions = ({ exercise }: { exercise: IExercise }) => {
     }
     setSavePlan([...savePlan, exercise]);
 
-    toast.success('Save Plan Is Added', {
+    toast.success('✓ Save Plan Is Added', {
       position: 'bottom-right',
       autoClose: 1000,
       hideProgressBar: false,

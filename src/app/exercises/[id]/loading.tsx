@@ -1,4 +1,4 @@
-const loadingPlanPage = () => {
+const loadingDetailsPage = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#0d0e12] px-4">
       <div className="flex flex-col items-center">
@@ -35,11 +35,11 @@ const loadingPlanPage = () => {
 
         {/* Bottom Message */}
         <p className="mt-5 text-center text-sm text-[#777b86]">
-          Preparing your Plan...
+          Preparing your workouts Details...
         </p>
       </div>
     </div>
   );
 };
 
-export default loadingPlanPage;
+export default loadingDetailsPage;

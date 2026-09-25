@@ -1,4 +1,4 @@
-const LoadingHomePage = () => {
+const loadingHomePage = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#0d0e12] px-4">
       <div className="flex flex-col items-center">
@@ -42,4 +42,4 @@ const LoadingHomePage = () => {
   );
 };
 
-export default LoadingHomePage;
+export default loadingHomePage;

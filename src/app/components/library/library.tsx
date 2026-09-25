@@ -9,7 +9,7 @@ interface LibraryProps {
 
 const Library = ({ exercises }: LibraryProps) => {
   return (
-    <section className="min-h-screen bg-[#0c0d0f] px-5 py-4 text-white sm:px-8 lg:px-10 mb-10">
+    <section id="library" className="min-h-screen bg-[#0c0d0f] px-5 py-4 text-white sm:px-8 lg:px-10 mb-10">
       <div className="mx-auto max-w-[1450px]">
 
         {/* Header */}

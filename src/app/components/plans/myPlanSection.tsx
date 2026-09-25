@@ -6,6 +6,7 @@ import PlanCard from './planCard';
 import PlanTabs from './planTabs';
 import Link from 'next/link';
 import { excerciseContext } from '../../context-provider/contextProvider';
+import { Bounce, toast } from 'react-toastify';
 
 const MyPlanSection = () => {
   const context = useContext(excerciseContext);
@@ -24,7 +25,7 @@ const MyPlanSection = () => {
   const sortedExercises = useMemo(() => {
     return [...activeExercises].sort((a, b) => {
       if (sortBy === 'duration') {
-        return b.duration - a.duration;
+        return a.duration - b.duration;
       }
 
       if (sortBy === 'rating') {
@@ -43,6 +44,17 @@ const MyPlanSection = () => {
   const totalCaloriesSavePlan = savePlan.reduce((total, exercise) => total + exercise.caloriesBurned, 0);
 
   const removeExercise = (id: number) => {
+    toast.error('× Workout removed', {
+        position: 'bottom-right',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+        transition: Bounce,
+      });
     if (activeTab === 'today') {
       setTodaysPlan((prev) => prev.filter((exercise) => exercise.id !== id));
     } else {
@@ -51,6 +63,17 @@ const MyPlanSection = () => {
   };
 
   const markAsDone = (id: number) => {
+    toast.success('✓ Workout marked as done', {
+        position: 'bottom-right',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+        transition: Bounce,
+      });
     setTodaysPlan((prev) => prev.filter((exercise) => exercise.id !== id));
   };
 
@@ -153,7 +176,7 @@ const MyPlanSection = () => {
             <div>
               <h2 className="text-lg font-black uppercase">Nothing Here Yet</h2>
 
-              <p className="mt-1 text-xs text-[#858b99] sm:text-sm">Browse the library and add a lift to get moving.</p>
+              <p className="mt-1 text-xs text-[#858b99] sm:text-sm">Browse the library and add a lift to get today moving.</p>
 
               <Link
                 href="/"
