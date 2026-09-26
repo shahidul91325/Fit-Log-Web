@@ -15,6 +15,22 @@ const ExerciseActions = ({ exercise }: { exercise: IExercise }) => {
   const { todaysPlan, setTodaysPlan, savePlan, setSavePlan } = context;
 
   const handleTodaysPlan = () => {
+    if (todaysPlan.length >= 5) {
+      toast.error("× Today's Plan Is Full (Maximum 5 Lifts)", {
+        position: 'bottom-right',
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+        transition: Bounce,
+      });
+
+      return;
+    }
+
     if (isTodaysPlanAdded) {
       toast.error('× Todays Plan Is Already Added', {
         position: 'bottom-right',
@@ -80,12 +96,19 @@ const ExerciseActions = ({ exercise }: { exercise: IExercise }) => {
       {/* Add Button */}
       <button
         type="button"
-        onClick={() => handleTodaysPlan()}
-        className="flex items-center justify-center gap-3 rounded-xl bg-[#CCFF00] px-6 py-3.5 text-sm font-bold text-black transition hover:bg-[#c6eb2f] active:scale-[0.98]"
+        onClick={handleTodaysPlan}
+        disabled={todaysPlan.length >= 5}
+        className="flex items-center justify-center gap-3 rounded-xl bg-[#CCFF00] px-6 py-3.5 text-sm font-bold text-black transition hover:bg-[#c6eb2f] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50"
       >
         <IoCalendarOutline className="h-6 w-6 shrink-0" />
 
-        <span>{isTodaysPlanAdded ? "Added to today's plan" : "Add to today's plan"}</span>
+        <span>
+          {todaysPlan.length >= 5
+            ? 'Plan is full'
+            : isTodaysPlanAdded
+              ? "Added to today's plan"
+              : "Add to today's plan"}
+        </span>
       </button>
 
       {/* Save Button */}

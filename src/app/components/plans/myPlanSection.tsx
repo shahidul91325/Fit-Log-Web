@@ -119,7 +119,7 @@ const MyPlanSection = () => {
             <div className="px-5 py-5 sm:px-6 sm:py-6">
               <p className="text-xs text-[#858b99]">Exercises</p>
 
-              <p className="mt-1 text-3xl font-black text-[#8cff18]">{savePlan.length}</p>
+              <p className="mt-1 text-3xl font-black text-[#CCFF00]">{savePlan.length}</p>
             </div>
 
             {/* Minutes */}
